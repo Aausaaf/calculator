@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            
+        }
+        body{
+            /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+            box-sizing: border-box;
+        }
+        h1{
+           font-size: 3.4vw;
+           text-align: center;
+           color: blueviolet;
+           margin-top: 5vh; 
+           font-weight: bolder;
+           letter-spacing: 0.5vh;
+        }
+        .main{
+            width: 33vw;
+            margin: auto;
+            border: 0.1vh solid white;
+            margin-top: 3vh;
+            height: 75vh;
+            /* box-shadow: 0.1vw 0.1vw 0.1vw 0.1vw black; */
+            -webkit-box-shadow: 0 0 0.1vw black ;
+            box-shadow: 0 0 0.2vw black;
+            border-radius: 1.4vw;
+           
+        }
+        #display{
+            width: 25vw;
+            height: 7vh;
+            border: none;
+            border: 0.1vh solid white;
+            -webkit-box-shadow: 0 0 0.1vw black ;
+            box-shadow: 0 0 0.3vw black;
+            border-radius: 0.5vw;
+            margin-top: 7vh;
+            margin-left: 3.2vw;
+            outline: none;
+            font-size: 1.8vw;
+            font-weight: 650;
+        }
+        #numbercon{
+            width: 26vw;
+            height: 50vh;
+            border: 0.1vh solid transparent;
+            margin-top: 2.7vh;
+            margin-left: 3.2vw;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+        }
+        #numbercon > div{
+            margin: 0;
+           width: 5.5vw;
+           height: 9.5vh;
+           border: 0.1vh solid white;
+           -webkit-box-shadow: 0 0 0.1vw black ;
+            box-shadow: 0 0 0.2vw black;
+            border-radius: 0.3vw;
+            text-align: center;
+            font-size: 1.6vw;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 650;
+            cursor: pointer;
+            
+
+        }
+        #numbercon > div:hover{
+            background-color: rebeccapurple;
+            color: white;
+            border: 0.1vw solid rebeccapurple;
+        }
+        #numbercon > div p {
+            margin: auto;
+            margin-top: 2.1vh;
+
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Masai Calculator</h1>
+    <div class="main">
+        <input type="text" readonly id="display"/>
+        <div id="numbercon">
+            <div class="number" onclick="claculate(1)"><p>1</p></div>
+            <div class="number" onclick="claculate(2)" ><p>2</p></div>
+            <div class="number" onclick="claculate(3)" ><p>3</p></div>
+            <div class="number" style="background-color: black; color: white;  border: 0.1vh solid black;" onclick="claculate(10)" ><p>+</p></div>
+            <div class="number" onclick="claculate(4)"><p>4</p></div>
+            <div class="number" onclick="claculate(5)" ><p>5</p></div>
+            <div class="number" onclick="claculate(6)" ><p>6</p></div>
+            <div class="number" style="background-color: black; color: white;  border: 0.1vh solid black;"  onclick="claculate(20)"><p>-</p></div>
+            <div class="number" onclick="claculate(7)"><p>7</p></div>
+            <div class="number" onclick="claculate(8)"><p>8</p></div>
+            <div class="number" onclick="claculate(9)" ><p>9</p></div>
+            <div class="number" style="background-color: black; color: white;  border: 0.1vh solid black;"  onclick="claculate(30)"><p>*</p></div>
+            <div class="number" style="background-color: red; color: white;  border: 0.1vh solid red;"  onclick="claculate(40)" ><p>c</p></div>
+            <div class="number" onclick="claculate(0)" ><p>0</p></div>
+            <div class="number" style="background-color: black; color: white;  border: 0.1vh solid black;"  onclick="claculate(50)" ><p>=</p></div>
+            <div class="number" style="background-color: black; color: white;  border: 0.1vh solid black;"  onclick="claculate(60)"><p>/</p></div>
+        </div>
+    </div>
+    <script>
+        var displays = document.getElementById("display")
+        displays.value = ""
+        var arr = []
+        var tem = ""
+        var arr2  = []
+        var stac = []
+       var t  =1 
+        function claculate(n)
+        {
+           if(t==0)
+           {
+            displays.value = ""
+            t = 1
+            arr = []
+            
+
+           }
+            arr2=[]
+            stac = []
+            
+           
+           let numb = parseInt(n)
+           if(numb == 10)
+           {
+            displays.value = displays.value + " " + "+" + " "
+           }
+           else  if(numb == 20)
+           {
+            displays.value = displays.value + " " + "-" + " "
+           }
+           else  if(numb == 30)
+           {
+            displays.value = displays.value + " " + "*" + " "
+           }
+          
+           else if(numb == 40)
+           {
+            displays.value = "" 
+           }
+           else if(numb == 50)
+           {
+            displays.value = displays.value + " " + "=" + " " 
+           }
+           else if(numb == 60)
+           {
+            displays.value = displays.value + " " + "/" + " "
+           }
+           else{
+               displays.value = displays.value  + numb
+           }
+          // console.log(numb)
+          if(numb !== 50 )
+          {
+              arr.push(numb) 
+              tem= ""
+             // console.log(arr)
+          }
+          else
+          {
+             
+           actions(arr) 
+           prints(arr2,stac)
+          }
+         if(numb === 40)
+          {
+             location.reload()
+          }
+         // else if(numb == 40)
+         // {
+         ///     displays.innerHTML = ""
+          ////    arr2=[]
+           ///   arr=[]
+           //   tem = ""
+           ///   stac = []
+        ///  }
+         
+        }
+        function actions(num)
+        {
+            for(var i = 0 ; i < num.length ;i++) {
+                if (num[i] !== 10 && num[i] !==20 && num[i] !== 30 && num[i] !== 60 )
+                {
+                    tem = tem + num[i]  
+                }    
+                else if (num[i] == 10)
+                {
+                    stac.push(10)
+                     tem = parseInt(tem)  
+                     
+                    arr2.push(tem)
+                    tem = "" 
+                    //console.log(arr2) stc = [10,20]
+                    
+                }
+                else if (num[i] == 20)
+                {
+                    stac.push(20)
+                     tem = parseInt(tem)
+                    arr2.push(tem)
+                    tem = "" 
+                   // console.log(arr2)
+                    
+                }
+                else if (num[i] == 30)
+                {
+                    stac.push(30)
+                     tem = parseInt(tem)
+                    arr2.push(tem)
+                    tem = "" 
+                   // console.log(arr2)
+                    
+                }
+                else if (num[i] == 60)
+                {
+                    stac.push(60)
+                     tem = parseInt(tem)
+                    arr2.push(tem)
+                    tem = "" 
+                    //console.log(arr2)
+                    
+                }
+                if (i === num.length-1)
+                {
+                    tem = parseInt(tem)
+                    arr2.push(tem)
+                    tem = "" 
+                    console.log(arr2)
+                    console.log(stac)
+                }
+                if(num[i] === 40)
+                {
+                    arr2 = []
+                    stac = []
+                   
+                }
+            }
+        }
+        function prints(arr2,stac)
+        {
+            let j = 1
+            let h = 0
+            let  ans = arr2[0] 
+            while(j< arr2.length && h < stac.length )
+            {
+                let sign = stac[h] 
+                  if(sign === 10)
+                  {
+                     ans = ans + arr2[j]  
+                  }
+                  else if (sign == 20)
+                  {
+                      ans = ans - arr2[j]
+                  }
+                  else if(sign == 30)
+                  {
+                      ans = ans * arr2[j]
+                  }
+                  else if (sign == 60)
+                  {
+                      ans = ans / arr2[j]
+                  }
+                  j++
+                  h++
+                  
+            }
+            if(ans + 2 !== ans + 2  )
+            {
+                displays.value =  "write in correct way"
+                t=0
+                return
+            }
+            
+            displays.value = displays.value + " " + ans
+            t=0
+
+        }
+    </script>
+</body>
+</html>
